@@ -1,5 +1,10 @@
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ChevronDown } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { ApplicationBatchReport } from '@/types'
+import { cn } from '@/lib/utils'
+import { BatchItem, BatchItemSkeleton } from './batch-item'
+import type { ApplicationBatchReport, Batch } from '@/types'
 
 function percent(part: number, total: number): number {
   if (total <= 0) return 0
@@ -8,13 +13,23 @@ function percent(part: number, total: number): number {
 
 interface ApplicationBatchSummaryProps {
   report: ApplicationBatchReport | undefined
+  batches?: Batch[]
   isLoading: boolean
+  isBatchesLoading?: boolean
 }
 
-export function ApplicationBatchSummary({ report, isLoading }: ApplicationBatchSummaryProps) {
+export function ApplicationBatchSummary({
+  report,
+  batches = [],
+  isLoading,
+  isBatchesLoading = false,
+}: ApplicationBatchSummaryProps) {
+  const { t } = useTranslation('admin')
+  const [isExpanded, setIsExpanded] = useState(false)
+
   if (isLoading) {
     return (
-      <div className="space-y-3 pb-4">
+      <div className="space-y-3 rounded-lg border bg-card p-4">
         <Skeleton className="h-4 w-56" />
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
           {[...Array(8)].map((_, i) => (
@@ -39,13 +54,35 @@ export function ApplicationBatchSummary({ report, isLoading }: ApplicationBatchS
     { label: 'Trashed', value: report.trashed, meta: `${percent(report.trashed, total)}%` },
   ] as const
 
+  const batchCount = batches.length
+
   return (
-    <div className="space-y-3 pb-4">
-      <div className="space-y-0.5">
-        <div className="text-sm font-semibold tracking-tight capitalize">
-          {report.name}
+    <div className="space-y-3 rounded-lg border bg-card p-4">
+      <button
+        type="button"
+        onClick={() => setIsExpanded((prev) => !prev)}
+        aria-expanded={isExpanded}
+        className="flex w-full items-center justify-between gap-3 text-left"
+      >
+        <div className="min-w-0 flex-1 space-y-0.5">
+          <div className="text-sm font-semibold tracking-tight capitalize">
+            {report.name}
+          </div>
         </div>
-      </div>
+
+        <div className="flex shrink-0 items-center gap-2">
+          <span className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">
+            {t('batches.batchCount', { count: batchCount })}
+          </span>
+          <ChevronDown
+            className={cn(
+              'h-5 w-5 text-muted-foreground transition-transform duration-200',
+              isExpanded && 'rotate-180'
+            )}
+          />
+        </div>
+      </button>
+
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
         {stats.map((item) => (
           <div key={item.label} className="rounded-lg border bg-card px-3 py-2">
@@ -57,7 +94,27 @@ export function ApplicationBatchSummary({ report, isLoading }: ApplicationBatchS
           </div>
         ))}
       </div>
+
+      <div
+        className={cn(
+          'grid transition-all duration-200 ease-in-out',
+          isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        )}
+      >
+        <div className="overflow-hidden">
+          <div className="space-y-3 border-t pt-4">
+            {isBatchesLoading ? (
+              [...Array(2)].map((_, i) => <BatchItemSkeleton key={i} />)
+            ) : batchCount === 0 ? (
+              <p className="py-2 text-sm text-muted-foreground">
+                {t('batches.noBatchesInGroup')}
+              </p>
+            ) : (
+              batches.map((batch) => <BatchItem key={batch.id} batch={batch} />)
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
-
