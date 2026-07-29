@@ -6,8 +6,6 @@ import {
   formatReportNumber,
   formatReportPercent,
   formatReportSignedNumber,
-  getSummaryLiveRejectedCount,
-  getSummaryLiveRejectionsMadeCount,
   getSummaryRejectedCount,
   getSummaryRejectedPercent,
   getSummaryRejectionsMadeCount,
@@ -93,11 +91,6 @@ export function UserReportSummary({ role, summary, isLoading }: UserReportSummar
           bg: STAT_CARD_BG.red,
         },
         {
-          value: getSummaryLiveRejectedCount(summary),
-          label: t('users.report.summary.liveRejectedCount'),
-          bg: STAT_CARD_BG.red,
-        },
-        {
           value: formatReportPercent(getSummaryRejectedPercent(summary)),
           label: t('users.report.summary.rejectedPercent'),
           bg: STAT_CARD_BG.red,
@@ -148,11 +141,6 @@ export function UserReportSummary({ role, summary, isLoading }: UserReportSummar
           bg: STAT_CARD_BG.red,
         },
         {
-          value: getSummaryLiveRejectedCount(summary),
-          label: t('users.report.summary.liveRejectedCount'),
-          bg: STAT_CARD_BG.red,
-        },
-        {
           value: formatReportPercent(getSummaryRejectedPercent(summary)),
           label: t('users.report.summary.rejectedPercent'),
           bg: STAT_CARD_BG.red,
@@ -190,11 +178,6 @@ export function UserReportSummary({ role, summary, isLoading }: UserReportSummar
         {
           value: getSummaryRejectionsMadeCount(summary),
           label: t('users.report.summary.rejectionsMade'),
-          bg: STAT_CARD_BG.red,
-        },
-        {
-          value: getSummaryLiveRejectionsMadeCount(summary),
-          label: t('users.report.summary.liveRejectionsMade'),
           bg: STAT_CARD_BG.red,
         },
         {
@@ -239,11 +222,6 @@ export function UserReportSummary({ role, summary, isLoading }: UserReportSummar
         {
           value: getSummaryRejectionsMadeCount(summary),
           label: t('users.report.summary.rejectionsMade'),
-          bg: STAT_CARD_BG.red,
-        },
-        {
-          value: getSummaryLiveRejectionsMadeCount(summary),
-          label: t('users.report.summary.liveRejectionsMade'),
           bg: STAT_CARD_BG.red,
         },
         {
