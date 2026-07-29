@@ -32,7 +32,7 @@ export function AnnotatorContributionTable({
 
   return (
     <div className={contributionTableWrapperClass}>
-      <table className={cn(contributionTableClass, 'min-w-[960px]')}>
+      <table className={cn(contributionTableClass, 'min-w-[1040px]')}>
         <thead>
           <tr className="text-left">
             <th className={cn(contributionTableUsernameHeadCellClass, 'text-left')}>
@@ -49,6 +49,9 @@ export function AnnotatorContributionTable({
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.annotator.rejectedCount')}
+            </th>
+            <th className={cn(contributionTableHeadCellClass, 'text-right')}>
+              {t('userContributions.tables.annotator.liveRejectedCount')}
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.annotator.rejectedPercent')}

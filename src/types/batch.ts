@@ -14,6 +14,23 @@ export type BatchExportTask = {
   orientation: 'landscape' | 'portrait'
   state: BatchTaskState
   final_transcript: string | null
+  final_char_count: number | null
+  annotator_1_total_char_difference: number | null
+  annotator_1_char_percent_diff: number | null
+  annotator_2_total_char_difference: number | null
+  annotator_2_char_percent_diff: number | null
+  reviewer_1_total_char_difference: number | null
+  reviewer_1_char_percent_diff: number | null
+  reviewer_2_total_char_difference: number | null
+  reviewer_2_char_percent_diff: number | null
+  final_reviewer_total_char_difference: number | null
+  final_reviewer_char_percent_diff: number | null
+  annotator_pair_levenshtein_distance: number | null
+  annotator_pair_similarity_ratio: number | null
+  annotator_pair_diff_percentage: number | null
+  reviewer_pair_levenshtein_distance: number | null
+  reviewer_pair_similarity_ratio: number | null
+  reviewer_pair_diff_percentage: number | null
 }
 
 // Response from batch export endpoint

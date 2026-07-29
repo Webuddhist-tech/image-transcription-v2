@@ -5,6 +5,8 @@ import {
   formatReportNumber,
   formatReportPercent,
   formatReportSignedNumber,
+  getSummaryLiveRejectedCount,
+  getSummaryLiveRejectionsMadeCount,
   getSummaryRejectedCount,
   getSummaryRejectedPercent,
   getSummaryRejectionsMadeCount,
@@ -72,6 +74,9 @@ export function ReviewerContributionTableRow({
       <td className={cn(contributionTableBodyCellClass, 'text-right')}>{finalReviewedCell}</td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>{getSummaryRejectedCount(row)}</td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
+        {getSummaryLiveRejectedCount(row)}
+      </td>
+      <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
         {formatReportPercent(getSummaryRejectedPercent(row))}
       </td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
@@ -94,6 +99,9 @@ export function ReviewerContributionTableRow({
       </td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
         {getSummaryRejectionsMadeCount(row)}
+      </td>
+      <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
+        {getSummaryLiveRejectionsMadeCount(row)}
       </td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
         {formatReportPercent(getSummaryRejectionsMadePercent(row))}
