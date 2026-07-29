@@ -5,6 +5,7 @@ import {
   formatReportNumber,
   formatReportPercent,
   formatReportSignedNumber,
+  getSummaryLiveRejectionsMadeCount,
   getSummaryRejectionsMadeCount,
   getSummaryRejectionsMadePercent,
   getSummaryUnrejectedTasksPercent,
@@ -46,6 +47,9 @@ export function FinalReviewerContributionTableRow({
       <td className={cn(contributionTableBodyCellClass, 'text-right')}>{finalisedCell}</td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
         {getSummaryRejectionsMadeCount(row)}
+      </td>
+      <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
+        {getSummaryLiveRejectionsMadeCount(row)}
       </td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
         {formatReportPercent(getSummaryRejectionsMadePercent(row))}
