@@ -4,6 +4,7 @@ import {
   formatReportNumber,
   formatReportPercent,
   formatReportSignedNumber,
+  getSummaryLiveRejectedCount,
   getSummaryRejectedCount,
   getSummaryRejectedPercent,
   getSummaryUnrejectedTasksPercent,
@@ -68,6 +69,9 @@ export function AnnotatorContributionTableRow({
       <td className={cn(contributionTableBodyCellClass, 'text-right')}>{reviewedCell}</td>
       <td className={cn(contributionTableBodyCellClass, 'text-right')}>{finalReviewedCell}</td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>{getSummaryRejectedCount(row)}</td>
+      <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
+        {getSummaryLiveRejectedCount(row)}
+      </td>
       <td className={cn(contributionTableBodyCellClass, 'text-right tabular-nums')}>
         {formatReportPercent(getSummaryRejectedPercent(row))}
       </td>
