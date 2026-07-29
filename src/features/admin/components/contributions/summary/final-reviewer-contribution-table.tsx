@@ -32,7 +32,7 @@ export function FinalReviewerContributionTable({
 
   return (
     <div className={contributionTableWrapperClass}>
-      <table className={cn(contributionTableClass, 'min-w-[1040px]')}>
+      <table className={cn(contributionTableClass, 'min-w-[960px]')}>
         <thead>
           <tr className="text-left">
             <th className={cn(contributionTableUsernameHeadCellClass, 'text-left')}>
@@ -43,9 +43,6 @@ export function FinalReviewerContributionTable({
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.finalReviewer.rejectionsMade')}
-            </th>
-            <th className={cn(contributionTableHeadCellClass, 'text-right')}>
-              {t('userContributions.tables.finalReviewer.liveRejectionsMade')}
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.finalReviewer.rejectionsMadePercent')}

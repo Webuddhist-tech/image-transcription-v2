@@ -34,8 +34,6 @@ export interface Itv2ContributionRejectionMetrics {
   /** @deprecated Use `unrejected_tasks_percent` */
   unrejected_percent?: number
   unrejected_tasks_percent?: number
-  /** Currently unresolved rejections received by this user. */
-  live_rejected_count?: number
 }
 
 /** Rejections initiated by the user (reviewer / final reviewer). */
@@ -45,8 +43,6 @@ export interface Itv2RejectionsMadeMetrics {
   rejections_made_count?: number
   /** @deprecated Use `rejections_made_percent` */
   rejections_made_percent?: number
-  /** Currently unresolved rejections made by this user. */
-  live_rejections_made_count?: number
 }
 
 export interface Itv2AnnotatorContributionSummary extends Itv2ContributionRejectionMetrics {

@@ -34,13 +34,6 @@ export function getSummaryRejectedCount(
   return summary.rejected_count ?? summary.rejection_count ?? 0
 }
 
-export function getSummaryLiveRejectedCount(
-  summary: Itv2ContributionRejectionMetrics | null | undefined
-): number {
-  if (!summary) return 0
-  return summary.live_rejected_count ?? 0
-}
-
 export function getSummaryRejectedPercent(
   summary: Itv2ContributionRejectionMetrics | null | undefined
 ): number | undefined {
@@ -60,13 +53,6 @@ export function getSummaryRejectionsMadeCount(
 ): number {
   if (!summary) return 0
   return summary.rejections_made_count ?? summary.rejections_made ?? 0
-}
-
-export function getSummaryLiveRejectionsMadeCount(
-  summary: Itv2RejectionsMadeMetrics | null | undefined
-): number {
-  if (!summary) return 0
-  return summary.live_rejections_made_count ?? 0
 }
 
 export function getSummaryRejectionsMadePercent(

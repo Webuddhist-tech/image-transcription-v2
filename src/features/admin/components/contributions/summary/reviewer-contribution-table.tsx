@@ -32,7 +32,7 @@ export function ReviewerContributionTable({
 
   return (
     <div className={contributionTableWrapperClass}>
-      <table className={cn(contributionTableClass, 'min-w-[1440px]')}>
+      <table className={cn(contributionTableClass, 'min-w-[1280px]')}>
         <thead>
           <tr className="text-left">
             <th className={cn(contributionTableUsernameHeadCellClass, 'text-left')}>
@@ -49,9 +49,6 @@ export function ReviewerContributionTable({
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.reviewer.rejectedCount')}
-            </th>
-            <th className={cn(contributionTableHeadCellClass, 'text-right')}>
-              {t('userContributions.tables.reviewer.liveRejectedCount')}
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.reviewer.rejectedPercent')}
@@ -76,9 +73,6 @@ export function ReviewerContributionTable({
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.reviewer.rejectionsMade')}
-            </th>
-            <th className={cn(contributionTableHeadCellClass, 'text-right')}>
-              {t('userContributions.tables.reviewer.liveRejectionsMade')}
             </th>
             <th className={cn(contributionTableHeadCellClass, 'text-right')}>
               {t('userContributions.tables.reviewer.rejectionsMadePercent')}
