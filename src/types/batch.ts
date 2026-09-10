@@ -14,6 +14,26 @@ export type BatchExportTask = {
   orientation: 'landscape' | 'portrait'
   state: BatchTaskState
   final_transcript: string | null
+  annotator_1_text: string | null
+  annotator_2_text: string | null
+  reviewer_1_text: string | null
+  reviewer_2_text: string | null
+  annotator_1_assigned: string | null
+  annotator_1_submitted: string | null
+  annotator_2_assigned: string | null
+  annotator_2_submitted: string | null
+  reviewer_1_assigned: string | null
+  reviewer_1_submitted: string | null
+  reviewer_2_assigned: string | null
+  reviewer_2_submitted: string | null
+  final_reviewer_assigned: string | null
+  final_reviewer_submitted: string | null
+  annotation_a_rejection_count: number | null
+  annotation_b_rejection_count: number | null
+  review_a_rejection_count: number | null
+  review_b_rejection_count: number | null
+  changed_assignee_slots: string | null
+  /** Metrics below are only populated for `finalised` tasks with stored metrics. */
   final_char_count: number | null
   annotator_1_total_char_difference: number | null
   annotator_1_char_percent_diff: number | null

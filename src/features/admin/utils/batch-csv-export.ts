@@ -12,6 +12,25 @@ const CSV_COLUMNS = [
   { key: 'orientation', header: 'Orientation' },
   { key: 'state', header: 'Status' },
   { key: 'final_transcript', header: 'Final Transcript' },
+  { key: 'annotator_1_text', header: 'Annotator 1 Text' },
+  { key: 'annotator_2_text', header: 'Annotator 2 Text' },
+  { key: 'reviewer_1_text', header: 'Reviewer 1 Text' },
+  { key: 'reviewer_2_text', header: 'Reviewer 2 Text' },
+  { key: 'annotator_1_assigned', header: 'Annotator 1 Assigned' },
+  { key: 'annotator_1_submitted', header: 'Annotator 1 Submitted' },
+  { key: 'annotator_2_assigned', header: 'Annotator 2 Assigned' },
+  { key: 'annotator_2_submitted', header: 'Annotator 2 Submitted' },
+  { key: 'reviewer_1_assigned', header: 'Reviewer 1 Assigned' },
+  { key: 'reviewer_1_submitted', header: 'Reviewer 1 Submitted' },
+  { key: 'reviewer_2_assigned', header: 'Reviewer 2 Assigned' },
+  { key: 'reviewer_2_submitted', header: 'Reviewer 2 Submitted' },
+  { key: 'final_reviewer_assigned', header: 'Final Reviewer Assigned' },
+  { key: 'final_reviewer_submitted', header: 'Final Reviewer Submitted' },
+  { key: 'annotation_a_rejection_count', header: 'Annotation A Rejection Count' },
+  { key: 'annotation_b_rejection_count', header: 'Annotation B Rejection Count' },
+  { key: 'review_a_rejection_count', header: 'Review A Rejection Count' },
+  { key: 'review_b_rejection_count', header: 'Review B Rejection Count' },
+  { key: 'changed_assignee_slots', header: 'Changed Assignee Slots' },
   { key: 'final_char_count', header: 'Final Char Count' },
   { key: 'annotator_1_total_char_difference', header: 'Annotator 1 Total Char Difference' },
   { key: 'annotator_1_char_percent_diff', header: 'Annotator 1 Char Percent Diff' },
@@ -30,6 +49,14 @@ const CSV_COLUMNS = [
   { key: 'reviewer_pair_similarity_ratio', header: 'Reviewer Pair Similarity Ratio' },
   { key: 'reviewer_pair_diff_percentage', header: 'Reviewer Pair Diff Percentage' },
 ] as const satisfies ReadonlyArray<{ key: keyof BatchExportTask; header: string }>
+
+type MissingExportCsvColumns = Exclude<
+  keyof BatchExportTask,
+  (typeof CSV_COLUMNS)[number]['key']
+>
+type AssertAllExportFieldsMapped = [MissingExportCsvColumns] extends [never] ? true : never
+const _allExportFieldsMapped: AssertAllExportFieldsMapped = true
+void _allExportFieldsMapped
 
 /**
  * Transforms a BatchExportTask to a CSV row with all fields
