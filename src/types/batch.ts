@@ -14,10 +14,15 @@ export type BatchExportTask = {
   orientation: 'landscape' | 'portrait'
   state: BatchTaskState
   final_transcript: string | null
+  annotator_1_id: string | null
   annotator_1_text: string | null
+  annotator_2_id: string | null
   annotator_2_text: string | null
+  reviewer_1_id: string | null
   reviewer_1_text: string | null
+  reviewer_2_id: string | null
   reviewer_2_text: string | null
+  final_reviewer_id: string | null
   annotator_1_assigned: string | null
   annotator_1_submitted: string | null
   annotator_2_assigned: string | null
